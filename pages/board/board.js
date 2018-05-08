@@ -21,7 +21,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad () {
-    wx.showLoading({ title: '拼命加载中...' })
+    wx.showLoading({ title: '正在加载中...' })
 
     const tasks = this.data.boards.map(board => {
       return app.douban.find(board.key, 1, 8)

@@ -42,11 +42,13 @@ Page({
     this.getCache()
       .then(cache => {
         if (cache) {
+          console.log(cache)
           return this.setData({ movies: cache.movies, loading: false })
         }
 
-        app.douban.find('coming_soon', 1, 3)
+        app.douban.find('coming_soon', 1, 6)
           .then(d => {
+            console.log(d)
             this.setData({ movies: d.subjects, loading: false })
             return app.wechat.setStorage('last_splash_data', {
               movies: d.subjects,

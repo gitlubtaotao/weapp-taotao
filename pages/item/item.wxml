@@ -1,16 +1,64 @@
-<view class="container">
+<view class="page">
   <image wx:if="{{ movie.images.large }}" class="background" src="{{ movie.images.large }}" mode="aspectFill"/>
   <block wx:if="{{ movie.title }}">
     <view class="meta">
       <image class="poster" src="{{ movie.images.large }}" mode="aspectFit"/>
-      <text class="title">{{ movie.title }}({{ movie.year }})</text>
-      <text class="info">评分：{{ movie.rating.average }}</text>
-      <text class="info">导演：<block wx:for="{{ movie.directors }}" wx:key="id"> {{ item.name }} </block></text>
-      <text class="info">主演：<block wx:for="{{ movie.casts }}" wx:key="id"> {{ item.name }} </block></text>
+      <text class="title">{{ movie.title }}</text>
+       <rich-text class="info">
+          <col>导演：</col>
+          <col class= "blockClass" wx:for="{{ movie.directors }}" wx:key="id">{{ item.name }}{{(movie.directors.length-1) != index ? '/' : ''}}</col>
+      </rich-text>
+      <rich-text class="info">
+        <col>编剧：</col>
+        <col class="blockClass" wx:for="{{movie.writers}}" wx:key='id'>{{ item.name }}{{(movie.writers.length-1) != index ? '/' : ''}}</col>
+      </rich-text>
+      <rich-text class="info">
+        <col>主演：</col>
+        <col class="blockClass" wx:for="{{ movie.casts }}" wx:key="id"> {{ item.name }}{{(movie.casts.length-1) != index ? '/' : ''}}</col>
+      </rich-text>
+      <rich-text class="info">
+        <col>类型：</col>
+        <col class="genresClass"  wx:for="{{ movie.genres }}" wx:key="id"> {{ item}}{{(movie.genres.length-1) != index ? '/' : ''}}</col>
+      </rich-text>
+      <text class="info">制片国家/地区： <block wx:for="{{movie.countries}}"  wx:key="id">{{ item }}</block></text>
+       <text class="info">语言： <block wx:for="{{movie.languages}}"  wx:key="id">{{ item }}</block></text>
+      <text class="info">上映日期： <block wx:for="{{movie.pubdates}}"  wx:key="id">{{ item }}</block></text>
+      <text class="info">片长：{{ movie.durations[0] }}</text> 
+      <rich-text class="info">
+        <col>评分：</col>
+        <col>{{movie.rating.average}}</col>
+        <col class="ratings_count">{{ movie.ratings_count}}人参与评论</col>
+      </rich-text>
+  </view>
+    <view class="summary">
+      <text class="label">剧情简介：</text>
+      <text class="content">{{ movie.summary }}</text>
     </view>
     <view class="summary">
-      <text class="label">摘要：</text>
-      <text class="content">{{ movie.summary }}</text>
+      <text class="label">图片：</text>
+      <view class="page-section page-section-spacing swiper">
+        <swiper indicator-dots="{{indicatorDots}}"
+          autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+          <block wx:for="{{movie.photos}}" wx:key="id">
+            <swiper-item>
+              <image src="{{item.image}}" class="slide-image" mode='aspectFit'/>
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+    </view> 
+    <view class="summary">
+      <text class="label">视频：</text>
+       <view class="page-section page-section-spacing swiper">
+        <swiper indicator-dots="{{indicatorDots}}"
+          autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+          <block wx:for="{{movie.trailer_urls}}" wx:key="id">
+            <swiper-item >
+               <video src="{{item}}" binderror="videoErrorCallback" enable-danmu danmu-btn controls></video>
+            </swiper-item>
+          </block>
+        </swiper>  
+      </view>
     </view>
   </block>
 </view>

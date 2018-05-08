@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   padding: 50rpx 40rpx;
-}
+ }
 
 .poster {
   width: 100%;
@@ -13,7 +13,7 @@
 
 .title {
   font-style: 42rpx;
-  color: #444;
+  color: #888;
 }
 
 .info {
@@ -22,7 +22,17 @@
   margin-top: 20rpx;
   width: 80%;
 }
-
+.blockClass{
+  color: #666699;
+ }
+ .genresClass{
+   color: #00FF00;
+   border: 1px solid #00FF00;
+ }
+ .ratings_count{
+   margin-left: 30px;
+   color: #5F9EA0;
+ }
 .summary {
   width: 80%;
   margin: 30rpx auto;
@@ -51,3 +61,8 @@
   z-index: -1000;
   opacity: .1;
 }
+.page-section{
+  width: 100%;
+  margin-bottom: 60rpx;
+}
+

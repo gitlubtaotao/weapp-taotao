@@ -19,7 +19,7 @@ Page({
   loadMore () {
     if (!this.data.hasMore) return
 
-    wx.showLoading({ title: '拼命加载中...' })
+    wx.showLoading({ title: '正在加载中...' })
     this.setData({ subtitle: '加载中...' })
 
     return app.douban.find(this.data.type, this.data.page++, this.data.size)

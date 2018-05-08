@@ -9,7 +9,7 @@
   <view class="board" scroll-y="true">
     <block wx:for="{{ boards }}" wx:key="key">
       <view class="board-item">
-        <navigator url="../list/list?type={{ item.key }}&title={{ item.title }}" hover-class="none">
+        <navigator url="../list/list?type={{ item.key }}&title={{ item.title }}" hover-class="none" wx:if="{{item}}">
           <view class="title">
             <text>{{ item.title }}</text>
             <image src="../../images/arrowright.png" mode="aspectFill"/>

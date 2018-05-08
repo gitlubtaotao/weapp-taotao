@@ -1,28 +1,32 @@
 {
   "pages": [
+    "pages/search/search",
     "pages/splash/splash",
     "pages/board/board",
     "pages/list/list",
     "pages/item/item",
-    "pages/search/search",
-    "pages/profile/profile"
+   
+    "pages/profile/profile",
+    "pages/index/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#40586d",
     "navigationBarTextStyle": "white",
-    "navigationBarTitleText": "电影 « 豆瓣",
+    "navigationBarTitleText": "涛涛电影院",
     "backgroundColor": "#f8f9fb",
     "backgroundTextStyle": "dark",
-    "enablePullDownRefresh": false
+    "enablePullDownRefresh": true
   },
   "tabBar": {
     "color": "#666666",
+    "class": "weui-tabbar",
     "selectedColor": "#000000",
     "borderStyle": "white",
     "backgroundColor": "#f8f9fb",
     "list": [
       {
         "text": "榜单",
+        "class": "weui-tabbar__item",
         "pagePath": "pages/board/board",
         "iconPath": "images/board.png",
         "selectedIconPath": "images/board-actived.png"

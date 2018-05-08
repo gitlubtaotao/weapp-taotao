@@ -48,6 +48,23 @@ App({
    * 生命周期函数--监听小程序初始化
    * 当小程序初始化完成时，会触发 onLaunch（全局只触发一次）
    */
+  getLocalCache(localName) {
+    console.log(localName)
+    return new Promise(resolve => {
+      getApp().wechat.getStorage(localName)
+        .then(res => {
+          const {title, movie, expires } = res.data
+          // 有缓存，判断是否过期
+          if (title && movie && expires > Date.now()) {
+            return resolve(res.data)
+          }
+          // 已经过期
+          console.log('uncached')
+          return resolve(null)
+        })
+        .catch(e => resolve(null))
+    })
+  },
   onLaunch () {
     wechat
       .getLocation()
@@ -63,5 +80,5 @@ App({
         this.data.currentCity = '北京'
         console.error(err)
       })
-  }
+  },
 })
